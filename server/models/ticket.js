@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
-import {userSchema} from "./user";
+const mongoose = require("mongoose");
+const {User,userSchema} = require("../models/user")
 
-const ticketSchema = new Schema({
+const ticketSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'userSchema'
@@ -38,7 +38,7 @@ const ticketSchema = new Schema({
 
 });
 
-const Ticket = new model("ticket", ticketSchema);
+const Ticket = new mongoose.model("ticket", ticketSchema);
 
-export default { Ticket,ticketSchema };
+module.exports = { Ticket,ticketSchema };
 

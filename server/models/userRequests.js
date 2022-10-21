@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
-import {ticketSchema} from "./ticket";
+const mongoose = require("mongoose");
+const { Ticket,ticketSchema } = require("../models/ticket");
 
-const userRequestSchema = new Schema({
+const userRequestSchema = new mongoose.Schema({
     ticketID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'ticketSchema'
@@ -23,7 +23,7 @@ const userRequestSchema = new Schema({
     }
 });
 
-const UserRequest = new model("userRequest", userRequestSchema);
+const UserRequest = new mongoose.model("userRequest", userRequestSchema);
 
-export default { UserRequest };
+module.exports =  UserRequest ;
 

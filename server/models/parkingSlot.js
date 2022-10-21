@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const parkSlotSchema = new Schema({
+const parkSlotSchema = new mongoose.Schema({
 	status: { 
         type: String, 
         required: true 
@@ -13,7 +13,7 @@ const parkSlotSchema = new Schema({
 	
 });
 
-const ParkSlot = new model("parkSlot", parkSlotSchema);
+const ParkSlot = new mongoose.model("parkSlot", parkSlotSchema);
 
-export default { ParkSlot };
+module.exports = { ParkSlot };
 
