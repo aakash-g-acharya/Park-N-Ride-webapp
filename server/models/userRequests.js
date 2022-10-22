@@ -20,7 +20,12 @@ const userRequestSchema = new mongoose.Schema({
         type: Number,
         enum: [0,1,2],
         default: 0
+    },
+    status: {
+        type: Boolean,
+        default: false
     }
+
 });
 
 const UserRequests = new mongoose.model("userRequest", userRequestSchema);

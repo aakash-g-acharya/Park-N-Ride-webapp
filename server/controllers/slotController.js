@@ -18,9 +18,25 @@ const addSlot = async (req,res) => {
 		await new ParkSlot(newSlot).save();
 		res.status(201).send({ message: "Slot created successfully",value:req.body.allocValue });
 	} catch (error) {
-        console.log(req)
+        console.log(req.body)
 		res.status(500).send({ message: "Internal Server Error",error:error,value:req.body.allocValue });
 	}
 }
 
-module.exports = { addSlot }
+
+const changeFault = async (req,res) => {
+    try {
+		const slot = await ParkSlot.findOne({id:req.body.id})
+        console.log(slot)
+		slot.status = "vacant";
+		await slot.save();
+		res.status(201).send({ message: "Slot made vacant after repair",id:req.body.id });
+	} catch (error) {
+        console.log(req.body)
+		res.status(500).send({ message: "Internal Server Error",error:error,value:req.body.allocValue });
+	}
+}
+
+
+
+module.exports = { addSlot , changeFault }

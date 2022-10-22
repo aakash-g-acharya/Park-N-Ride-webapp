@@ -8,6 +8,8 @@ const userRoutes = require("./routes/user");
 const slotRoutes = require("./routes/slot");
 const ticketRoutes = require("./routes/ticket");
 const feedbackRoutes = require("./routes/feedback");
+const userRequestRoutes = require("./routes/userRequests");
+
 
 
 // database connection
@@ -23,6 +25,8 @@ app.use("/api/user", userRoutes);
 app.use("/api/slot",slotRoutes);
 app.use("/api/ticket",ticketRoutes);
 app.use("/api/feedback",feedbackRoutes);
+app.use("/api/userRequest",userRequestRoutes);
+
 
 
 

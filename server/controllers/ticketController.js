@@ -113,7 +113,7 @@ const paymentDone = async (req,res) => {
 
         slot.status = "vacant";
 
-        slot.save();
+        await slot.save();
         
         res.status(201).send({ message: "Checkout done...",existTicket });
 
