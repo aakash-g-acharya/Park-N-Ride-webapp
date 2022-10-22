@@ -4,7 +4,7 @@ const { Ticket,ticketSchema } = require("../models/ticket");
 const userRequestSchema = new mongoose.Schema({
     ticketID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'ticketSchema'
+        ref: 'ticket'
     },
     carWashStatus: {
         type: Number,
@@ -16,14 +16,14 @@ const userRequestSchema = new mongoose.Schema({
         enum: [0,1,2],
         default: 0
     },
-    TyreworkStatus: {
+    tyreworkStatus: {
         type: Number,
         enum: [0,1,2],
         default: 0
     }
 });
 
-const UserRequest = new mongoose.model("userRequest", userRequestSchema);
+const UserRequests = new mongoose.model("userRequest", userRequestSchema);
 
-module.exports =  UserRequest ;
+module.exports =  {UserRequests} ;
 

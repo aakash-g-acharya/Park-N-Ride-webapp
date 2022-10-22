@@ -9,6 +9,10 @@ const parkSlotSchema = new mongoose.Schema({
         type: Number, 
         required: true,
         unique: true
+    },
+    allocValue: {
+        type: Number,
+        required: true
     }
 	
 });

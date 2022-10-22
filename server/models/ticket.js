@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const {User,userSchema} = require("../models/user")
+// const {User,userSchema} = require("../models/user")
 
 const ticketSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'userSchema'
+        ref: "user"
     },
 	vehicleNo: { 
         type: String, 
@@ -23,12 +23,12 @@ const ticketSchema = new mongoose.Schema({
         required: true
     },
     outTime: {
-        type: Date,
-        required: true
+        type: Date
     },
     paymentStatus: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     paymentCharge: {
         type: Number,
