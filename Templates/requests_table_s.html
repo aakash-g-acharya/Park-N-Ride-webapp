@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/0ef76c0181.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="page1.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <nav class="navbar">
+        <div class="col-3 px-4 d-flex justify-content-start align-items-center">
+          <img src="./images/logo.png" alt="" srcset="" height="50" />
+        </div>
+        <div class="col-3 px-2 d-flex justify-content-end">
+          <button class="white_btn" onClick="exit();">Logout</button>
+        </div>
+      </nav>
+
+      <div class="container mt-5 p-2" style="background-color: antiquewhite">
+        <div class="col p-2">
+          <div
+            class="row mx-auto p-2"
+            style="background-color: rgb(197, 124, 28)"
+          >
+            <h2 style="text-align: center"> Requests / Feedback </h2>
+          </div>
+          <div
+            class="row m-5 pt-4 pb-3 px-5 d-flex justify-content-center"
+            style="background-color: rgb(9, 67, 95)"
+          >
+            <div class="col d-flex justify-content-center my-1">
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic mixed styles example"
+              >
+                <a
+                  href="#"
+                  class="btn btn-warning btn-lg mx-1"
+                  role="button"
+                  style="width: max-content"
+                  >Active Requests
+                </a>
+                <a
+                  href="./requests_table_f.html"
+                  class="btn btn-warning btn-lg"
+                  role="button"
+                  style="width: max-content"
+                  >Active Feedbacks
+                </a>
+                <a
+                  href="./admin.html"
+                  class="btn btn-success btn-lg mx-1"
+                  role="button"
+                  style="width: max-content"
+                  >Home Page
+                </a>
+                <a
+                  href="./archive_table_s.html"
+                  class="btn btn-warning btn-lg"
+                  role="button"
+                  style="width: max-content"
+                  >Archive Requests
+                </a>
+                <a
+                  href="./archive_table_f.html"
+                  class="btn btn-warning btn-lg mx-1"
+                  role="button"
+                  style="width: max-content"
+                  >Archive Feedbacks
+                </a>
+              </div>
+            </div>
+            <div class="row my-4">
+              <table class="table table-dark table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Request Type</th>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Service Request</td>
+                    <td>Otto</td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-sm">
+                        Take Action
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Service Request</td>
+                    <td>Thornton</td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-sm">
+                        Take Action
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Service Request</td>
+                    <td>Thornton</td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-sm">
+                        Take Action
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Separate Popper and Bootstrap JS -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
