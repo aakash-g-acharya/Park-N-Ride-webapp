@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
@@ -11,13 +11,19 @@ const Login = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
+	const navigate = useNavigate();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "localhost:8080/api/admin/login";
-			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/";
+			const url = "http://localhost:8080/api/user/login";
+			const resp = await axios.post(url, data);
+			console.log(resp.data)
+			if(resp.data.message==='logged in successfully')
+			{localStorage.setItem("userID", resp.data.store);
+			navigate("/userPage");}
+
+
 		} catch (error) {
 			if (
 				error.response &&

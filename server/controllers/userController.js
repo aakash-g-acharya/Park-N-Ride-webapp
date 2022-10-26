@@ -12,7 +12,7 @@ const registerUser = async (req,res) => {
 		await new User({ ...req.body}).save();
 		res.status(201).send({ message: "User created successfully",store:req.body.email });
 	} catch (error) {
-        console.log(req)
+        console.log(req.body)
 		res.status(500).send({ message: "Internal Server Error",error:error,store:req.body.email });
 	}
 }

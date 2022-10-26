@@ -1,9 +1,24 @@
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Main = () => {
+
+
+	const navigate = useNavigate();
+
+	useEffect(()=>{
+		const user = localStorage.getItem("userID");
+		if(!user){
+			navigate("/login")
+		}
+	})
+
+	
+
 	const handleLogout = () => {
-		localStorage.removeItem("token");
-		window.location.reload();
+		localStorage.removeItem("userID");
+		navigate("/login");
 	};
 
 	return (
