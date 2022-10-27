@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0px;
+  z-index:2;
 }
 
 .navbar h1 {
@@ -71,4 +72,18 @@
 .bullet a{
     text-decoration: none;
     color: black;
+}
+
+.navbar .nav-link {
+  padding: 0 25px;
+  color: black;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.navbar .nav-link:focus,
+.navbar .nav-link:hover {
+  color: rgb(9, 67, 95) !important;
 }

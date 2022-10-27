@@ -1,4 +1,5 @@
 import HomePage from "./components/HomePage";
+import UserHome from "./components/UserHome/UserHome";
 import Page1 from "./components/UserHome/Page1";
 import Page2 from "./components/UserHome/Page2";
 import Page3 from "./components/UserHome/Page3";
@@ -21,6 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/UserHome" element={<UserHome />}></Route>
           <Route path="/Page1" element={<Page1 />}></Route>
           <Route path="/Page2" element={<Page2 />}></Route>
           <Route path="/Page3" element={<Page3 />}></Route>
