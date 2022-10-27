@@ -1,5 +1,5 @@
 // import "./css/bootstrap.min.css";
-// // import "./css/style.css";
+// import "./css/style.css";
 // import "./css/responsive.css";
 // import "./css/jquery.mCustomScrollbar.min.css"
 
@@ -11,7 +11,7 @@ export default function UserDashboard() {
 
 //   const navigateToNextPage = () => {
 //     navigate("/Page3");
-//   };
+//  
 
   
 

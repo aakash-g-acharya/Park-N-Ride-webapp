@@ -12,7 +12,7 @@ import Func32 from "./components/AdminHome/Func32";
 import Func33 from "./components/AdminHome/Func33";
 import Func34 from "./components/AdminHome/Func34";
 import Func4 from "./components/AdminHome/Func4";
-import UserDashboard from "./components/UserHome/userDashboard";
+import UserDashboard from "./components/UserHome/UserHome";
 
 // import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

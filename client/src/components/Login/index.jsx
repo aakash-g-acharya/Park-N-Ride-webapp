@@ -21,7 +21,7 @@ const Login = () => {
 			console.log(resp.data)
 			if(resp.data.message==='logged in successfully')
 			{localStorage.setItem("userID", resp.data.store);
-			navigate("/userPage");}
+			navigate("/dashboard");}
 
 
 		} catch (error) {

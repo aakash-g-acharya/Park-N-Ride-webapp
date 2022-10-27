@@ -2,6 +2,7 @@ import "./page1.css";
 import "./ticket.css";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
@@ -10,6 +11,27 @@ const bannerColor = "rgb(197, 124, 28)";
 
 export default function Page1() {
   const navigate = useNavigate();
+
+  useEffect(async ()=>{
+    try {
+			const url = "http://localhost:8080/api/user/login";
+			const resp = await axios.post(url, data);
+			console.log(resp.data)
+			if(resp.data.message==='logged in successfully')
+			{localStorage.setItem("userID", resp.data.store);
+			navigate("/userPage");}
+
+
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				setError(error.response.data.message);
+			}
+		}
+  })
 
   const navigateToNextPage = () => {
     navigate("/Page2");
