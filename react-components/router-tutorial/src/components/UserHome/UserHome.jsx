@@ -1,5 +1,5 @@
-import "./page1.css";
-import "./home.css";
+import "./style1.css";
+import "./style2.css";
 
 // import { useNavigate } from "react-router-dom";
 
@@ -94,7 +94,7 @@ export default function UserHome() {
               <div className="food_box">
                 <br />
                 <a
-                  href="/Func1"
+                  href="/Profile"
                   className="btn btn-warning btn-lg"
                   role="button"
                 >
@@ -114,7 +114,7 @@ export default function UserHome() {
               <div className="food_box">
                 <br />
                 <a
-                  href="/Page1"
+                  href="/RequestTicket"
                   className="btn btn-warning btn-lg"
                   role="button"
                 >

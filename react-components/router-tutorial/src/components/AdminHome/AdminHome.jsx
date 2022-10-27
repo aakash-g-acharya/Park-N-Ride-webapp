@@ -1,7 +1,7 @@
 // import {Link} from "react-router-dom";
 
-import "../UserHome/page1.css";
-import "../UserHome/home.css";
+import "./style1.css";
+import "./style2.css";
 
 // import { useNavigate } from "react-router-dom";
 
@@ -99,7 +99,7 @@ export default function AdminHome() {
             >
               <div className="food_box">
                 <br />
-                <a href="/Func1" className="btn btn-warning btn-lg" role="button"
+                <a href="/Profile" className="btn btn-warning btn-lg" role="button"
                   ><strong>Profile</strong>
                 </a>
                 <br />
@@ -115,7 +115,7 @@ export default function AdminHome() {
             <div className="col-md-6 d-flex align-self-stretch">
               <div className="food_box">
                 <br />
-                <a href="/Func2" className="btn btn-warning btn-lg" role="button"
+                <a href="/ContactAgents" className="btn btn-warning btn-lg" role="button"
                   ><strong>Contact Service Agents</strong>
                 </a>
                 <br />
@@ -133,7 +133,7 @@ export default function AdminHome() {
             >
               <div className="food_box">
                 <br />
-                <a href="/Func31" className="btn btn-warning btn-lg" role="button"
+                <a href="/ActiveRequests" className="btn btn-warning btn-lg" role="button"
                   ><strong>Service Requests</strong>
                 </a>
                 <br />
@@ -149,7 +149,7 @@ export default function AdminHome() {
             <div className="col-md-6 d-flex align-self-stretch">
               <div className="food_box">
                 <br />
-                <a href="/Func4" className="btn btn-warning btn-lg" role="button"
+                <a href="/ServiceSlot" className="btn btn-warning btn-lg" role="button"
                   ><strong>Service Faulty Slots</strong>
                 </a>
                 <br />
