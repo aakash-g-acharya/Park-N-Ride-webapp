@@ -16,7 +16,7 @@ export default function Services() {
   const handleLogout = () => {
 		localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/login");
+		navigate("/");
 	};
 
   const navigateToNextPage = async () => {

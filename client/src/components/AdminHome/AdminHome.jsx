@@ -1,4 +1,5 @@
 // import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./style1.css";
 import "./style2.css";
@@ -11,6 +12,30 @@ const secondaryColor = "rgb(9, 67, 95)";
 // const bannerColor = "rgb(197, 124, 28)";
 
 export default function AdminHome() {
+
+  const navigate = useNavigate();
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+
+  const getProfile = ()=>{
+    navigate("/adminProfile");
+  }
+
+  const getContact = ()=>{
+    navigate("/contact");
+  }
+
+  const getReq = ()=>{
+    navigate("/profile");
+  }
+
+  const getSlot = ()=>{
+    navigate("/serviceSlot");
+  }
+
   return (
     <>
       {/* <Link to="/Func1">Profile</Link>
@@ -57,7 +82,7 @@ export default function AdminHome() {
         </div>
 
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>
@@ -99,9 +124,7 @@ export default function AdminHome() {
             >
               <div className="food_box">
                 <br />
-                <a href="/Profile" className="btn btn-warning btn-lg" role="button"
-                  ><strong>Profile</strong>
-                </a>
+                <button type="button" onClick={getProfile} className="btn btn-warning"><strong>Profile</strong></button>
                 <br />
                 <br />
                 <p>
@@ -115,9 +138,7 @@ export default function AdminHome() {
             <div className="col-md-6 d-flex align-self-stretch">
               <div className="food_box">
                 <br />
-                <a href="/ContactAgents" className="btn btn-warning btn-lg" role="button"
-                  ><strong>Contact Service Agents</strong>
-                </a>
+                <button type="button" onClick={getContact} className="btn btn-warning"><strong>Contact service agents</strong></button>
                 <br />
                 <br />
                 <p>
@@ -133,9 +154,7 @@ export default function AdminHome() {
             >
               <div className="food_box">
                 <br />
-                <a href="/ActiveRequests" className="btn btn-warning btn-lg" role="button"
-                  ><strong>Service Requests</strong>
-                </a>
+                <button type="button" onClick={getReq} className="btn btn-warning"><strong>Service Requests</strong></button>
                 <br />
                 <br />
                 <p>
@@ -149,9 +168,7 @@ export default function AdminHome() {
             <div className="col-md-6 d-flex align-self-stretch">
               <div className="food_box">
                 <br />
-                <a href="/ServiceSlot" className="btn btn-warning btn-lg" role="button"
-                  ><strong>Service Faulty Slots</strong>
-                </a>
+                <button type="button" onClick={getSlot} className="btn btn-warning"><strong>Service faulty slots</strong></button>
                 <br />
                 <br />
                 <p>

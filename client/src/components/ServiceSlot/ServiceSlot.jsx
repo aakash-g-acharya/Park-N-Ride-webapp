@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import SlotsMap from "../SlotsMap/ServiceSlot"
 
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
@@ -8,9 +11,78 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function ServiceSlot() {
   const navigate = useNavigate();
 
+  const slotArray1=[29,25,17,9,10,18,27,30]
+  const slotArray2=[21,13,5,1,2,6,14,22]
+  const slotArray3=[23,15,7,3,4,8,16,24]
+  const slotArray4=[31,26,19,11,12,20,28,32]
+
+
+  const [slots,setSlots] = useState(null)
+  const [count,setCount] = useState(0)
+
+  useEffect (async () => {
+    
+    try {
+      
+
+			const url = "http://localhost:8080/api/slot/getSlot";
+			var resp = await axios.get(url);
+      resp = resp.data
+      
+			if(resp.message==='Slots sent')
+			{
+        setSlots(resp.slot)
+        console.log(slots[0])
+      }
+      
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				console.log(error.response.message);
+			}
+		}
+
+  },[count]);
+
+
+  const changeFaultSlot = async (slotId)=>{
+    try {
+      const data = {
+        id:slotId
+      }
+			const url = "http://localhost:8080/api/slot/changeFault";
+			var resp = await axios.post(url,data);
+      resp = resp.data
+      
+			if(resp.message==='Slot made vacant after repair')
+			{
+        console.log(resp.id)
+        setCount(count+1);
+      }
+      
+		} catch (error) {
+			if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				console.log(error.response.message);
+			}
+		}
+  }
+
   const navigateToNextPage = () => {
-    navigate("/AdminHome");
+    navigate("/adminHome");
   };
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+
   return (
     <>
       <nav className="navbar">
@@ -23,7 +95,7 @@ export default function ServiceSlot() {
           />
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>
@@ -60,184 +132,51 @@ export default function ServiceSlot() {
                 <table className="table table-dark table-borderless d-flex justify-content-center">
                   <tbody>
                     <tr>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-danger m-1">
-                          01
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          02
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          03
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          04
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          05
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          06
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-danger m-1">
-                          07
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          08
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
+                    <td className="text-center"></td>
+
+                      {slots&&slotArray1.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                    <td className="text-center"></td>
+
                     </tr>
                     <tr>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          09
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          10
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-danger m-1">
-                          11
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          12
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          13
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          14
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          15
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          16
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
+                    <td className="text-center"></td>
+
+                      {slots&&slotArray2.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                    <td className="text-center"></td>
+                    </tr>
+                    <div style={{height:"50px"}}></div>
+                    <tr>
+                    <td className="text-center"></td>
+
+                        {slots&&slotArray3.map(item=>{
+                          return <SlotsMap id={item} obj={slots.find(obj => {
+                            return obj.id === item
+                          })} change={changeFaultSlot} />
+                        })}
+
+                        <td className="text-center"></td>
                     </tr>
                     <tr>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          17
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          18
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          19
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          20
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          21
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-warning m-1">
-                          22
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          23
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          24
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
-                    </tr>
-                    <tr>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          25
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-warning m-1">
-                          26
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-danger m-1">
-                          27
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          28
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          29
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-warning m-1">
-                          30
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          31
-                        </button>
-                      </td>
-                      <td className="text-center">
-                        <button type="button" className="btn btn-success m-1">
-                          32
-                        </button>
-                      </td>
-                      <td className="text-center"></td>
+                    <td className="text-center"></td>
+
+                        {slots&&slotArray4.map(item=>{
+                          return <SlotsMap id={item} obj={slots.find(obj => {
+                            return obj.id === item
+                          })} change={changeFaultSlot} />
+                        })}
+
+                        <td className="text-center"></td>
+                      
                     </tr>
                   </tbody>
                 </table>

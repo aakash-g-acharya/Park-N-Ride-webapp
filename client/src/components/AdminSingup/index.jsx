@@ -1,40 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const Login = () => {
-
-	const navigate = useNavigate();
-
-	// useEffect (()=>{
-	// 	const user = localStorage.getItem("userID");
-	// 	if(user){
-	// 		navigate("/dashboard")
-	// 	}
-	// 	console.log(user)
-	// },[])
-
-	const [data, setData] = useState({ email: "", password: "" });
+const Signup = () => {
+	const [data, setData] = useState({
+		name: "",
+		email: "",
+		password: "",
+	});
 	const [error, setError] = useState("");
-
+	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/user/login";
+			const url = "http://localhost:8080/api/admin/register";
 			const resp = await axios.post(url, data);
-			console.log(resp.data)
-			if(resp.data.message==='logged in successfully')
+			
+			if(resp.data.message==='Admin created successfully')
 			{localStorage.setItem("userID", resp.data.store);
-			localStorage.setItem("userIDT", resp.data.id);
-			navigate("/dashboard");}
-
+			navigate("/adminHome");}
+			
 
 		} catch (error) {
 			if (
@@ -48,11 +39,30 @@ const Login = () => {
 	};
 
 	return (
-		<div className={styles.login_container}>
-			<div className={styles.login_form_container}>
+		<div className={styles.signup_container}>
+			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
+					<h1>Have an account?</h1>
+					<Link to="/adminLogin">
+						<button type="button" className={styles.white_btn}>
+							Login in
+						</button>
+					</Link>
+				</div>
+				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<h1>Create Account</h1>
+						<input
+							type="text"
+							placeholder="First Name"
+							name="name"
+							onChange={handleChange}
+							value={data.name}
+							required
+							className={styles.input}
+						/>
+						
+						
 						<input
 							type="email"
 							placeholder="Email"
@@ -73,27 +83,13 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sign In
-						</button>
-					</form>
-				</div>
-				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
-						<button type="button" className={styles.white_btn}>
 							Sign Up
 						</button>
-					</Link>
-					<div style={{height:"50px"}}></div>
-					<Link to="/adminLogin">
-						<button type="button" className={styles.white_btn}>
-							Sign in as admin
-						</button>
-					</Link>
+					</form>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default Login;
+export default Signup;

@@ -16,7 +16,7 @@ export default function UserHome() {
     useEffect (()=>{
 		const user = localStorage.getItem("userID");
 		if(!user){
-			navigate("/login")
+			navigate("/")
 		}
 	})
 
@@ -25,7 +25,7 @@ export default function UserHome() {
 	const handleLogout = () => {
 		localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/login");
+		navigate("/");
 	};
 
 

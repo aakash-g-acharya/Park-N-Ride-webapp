@@ -19,13 +19,13 @@ export default function Profile() {
     try {
       const user = localStorage.getItem("userID");
 		  if(!user){
-			navigate("/")
+			navigate("/adminLogin")
 		  }
       const data = {
         "email":user
       }
 
-			const url = "http://localhost:8080/api/user/profile";
+			const url = "http://localhost:8080/api/admin/profile";
 			var resp = await axios.post(url, data);
       resp = resp.data
 			if(resp.message==='logged in successfully')
@@ -48,12 +48,11 @@ export default function Profile() {
 
   const handleLogout = () => {
 		localStorage.removeItem("userID");
-    localStorage.removeItem("userIDT");
-		navigate("/");
+		navigate("/adminLogin");
 	};
 
   const goToHome = ()=>{
-    navigate("/dashboard");
+    navigate("/adminHome");
   }
 
 
@@ -100,7 +99,7 @@ export default function Profile() {
                             src={require("./images/user.jpg")}
                             alt=""
                           />
-                          <h3> User </h3>
+                          <h3> Admin </h3>
                         </div>
                       </div>
                     </div>
@@ -115,24 +114,14 @@ export default function Profile() {
                         <div className="card-body p-0">
                           <table className="table table-bordered">
                             <tr>
-                              <th>USER ID</th>
+                              <th>ADMIN ID</th>
                               <td>:</td>
                               <td>{userInfo&&userInfo._id}</td>
                             </tr>
                             <tr>
-                              <th>FULL NAME</th>
+                              <th>NAME</th>
                               <td>:</td>
                               <td>{userInfo&&userInfo.name}</td>
-                            </tr>
-                            <tr>
-                              <th>PHONE</th>
-                              <td>:</td>
-                              <td>{userInfo&&userInfo.phone}</td>
-                            </tr>
-                            <tr>
-                              <th>ADDRESS</th>
-                              <td>:</td>
-                              <td>{userInfo&&userInfo.address}</td>
                             </tr>
                             <tr>
                               <th>EMAIL</th>

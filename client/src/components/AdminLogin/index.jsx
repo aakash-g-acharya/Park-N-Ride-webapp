@@ -10,7 +10,7 @@ const Login = () => {
 	// useEffect (()=>{
 	// 	const user = localStorage.getItem("userID");
 	// 	if(user){
-	// 		navigate("/dashboard")
+	// 		navigate("/adminHome")
 	// 	}
 	// 	console.log(user)
 	// },[])
@@ -18,7 +18,7 @@ const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
-
+	
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
@@ -27,13 +27,12 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/user/login";
+			const url = "http://localhost:8080/api/admin/login";
 			const resp = await axios.post(url, data);
 			console.log(resp.data)
 			if(resp.data.message==='logged in successfully')
 			{localStorage.setItem("userID", resp.data.store);
-			localStorage.setItem("userIDT", resp.data.id);
-			navigate("/dashboard");}
+			navigate("/adminHome");}
 
 
 		} catch (error) {
@@ -78,16 +77,9 @@ const Login = () => {
 					</form>
 				</div>
 				<div className={styles.right}>
-					<h1>New Here ?</h1>
-					<Link to="/signup">
+					<Link to="/adminSignup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
-						</button>
-					</Link>
-					<div style={{height:"50px"}}></div>
-					<Link to="/adminLogin">
-						<button type="button" className={styles.white_btn}>
-							Sign in as admin
 						</button>
 					</Link>
 				</div>

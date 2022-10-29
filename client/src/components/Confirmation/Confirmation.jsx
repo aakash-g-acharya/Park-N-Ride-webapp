@@ -13,7 +13,7 @@ export default function Confirmation() {
   const handleLogout = () => {
 		localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/login");
+		navigate("/");
 	};
   const navigateToNextPage = () => {
     navigate("/dashboard");

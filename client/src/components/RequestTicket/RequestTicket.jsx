@@ -22,7 +22,7 @@ export default function RequestTicket() {
   const handleLogout = () => {
 		localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/login");
+		navigate("/");
 	};
 
   useEffect (async () => {
@@ -30,7 +30,7 @@ export default function RequestTicket() {
     try {
       const user = localStorage.getItem("userIDT");
 		  if(!user){
-			navigate("/login")
+			navigate("/")
 		  }
       const data = {
         "userID":user
@@ -42,7 +42,7 @@ export default function RequestTicket() {
       
 			if(resp.message==='Ticket exists')
 			{
-        navigate("/service");
+        navigate("/payment");
       }
       else if(resp.message==="Ticket created successfully"){
         localStorage.setItem("ticketID", resp.tid);
@@ -120,9 +120,9 @@ export default function RequestTicket() {
               <div className="row d-flex justify-content-center py-2">
                 <div className="card fl-left">
                   <div className="date">
-                    <time datetime="23th feb">
+                    {/* <time datetime="23th feb">
                       <span>PARK</span>
-                    </time>
+                    </time> */}
                   </div>
                   <div className="card-cont">
                     <small>TICKET-ID : {data && localStorage.getItem("ticketID")}</small>

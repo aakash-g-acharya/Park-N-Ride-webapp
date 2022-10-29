@@ -10,8 +10,13 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function ContactAgents() {
   const navigate = useNavigate();
 
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+
   const navigateToNextPage = () => {
-    navigate("/AdminHome");
+    navigate("/adminHome");
   };
   return (
     <>
@@ -20,7 +25,7 @@ export default function ContactAgents() {
           <img src={require("./images/logo.png")} alt="" srcset="" height="50" />
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>

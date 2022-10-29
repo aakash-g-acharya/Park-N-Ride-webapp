@@ -4,17 +4,20 @@ const { ParkSlot } = require("../models/parkingSlot")
 const addSlot = async (req,res) => {
     try {
 		const slot = await ParkSlot.find({allocValue:req.body.allocValue})
-        console.log(Object.keys(slot).length)
-		if (slot&&Object.keys(slot).length==4)
-			return res
+        console.log(Object.keys(slot).length,slot)
+		if (slot&&req.body.allocValue==2&&Object.keys(slot).length==4)
+		{	return res
 				.status(409)
-				.send({ message: "Cant add slots of this value" });
-
+				.send({ message: "Cant add slots of this value" });}
+		else if(slot&&Object.keys(slot).length==8&&req.body.allocValue>2)
+		{	return res
+			.status(409)
+			.send({ message: "Cant add slots of this value" });}
         newSlot = {
             status:"vacant",
             ...req.body
         }
-
+		console.log(newSlot)
 		await new ParkSlot(newSlot).save();
 		res.status(201).send({ message: "Slot created successfully",value:req.body.allocValue });
 	} catch (error) {
@@ -37,6 +40,31 @@ const changeFault = async (req,res) => {
 	}
 }
 
+const getSlot = async(req,res) => {
+	try {
+		const slot = await ParkSlot.find({})
+        console.log(slot)
+		
+		res.status(201).send({ message: "Slots sent",slot });
+	} catch (error) {
+        console.log(req.body)
+		res.status(500).send({ message: "Internal Server Error",error:error,value:req.body.allocValue });
+	}
+}
+
+const addFault = async(req,res) => {
+	try {
+		const slot = await ParkSlot.findOne({id:req.body.id})
+        console.log(slot)
+		slot.status = "faulty";
+		await slot.save();
+		res.status(201).send({ message: "Slot made faulty",slot });
+	} catch (error) {
+        console.log(req.body)
+		res.status(500).send({ message: "Internal Server Error",error:error,value:req.body.allocValue });
+	}
+}
 
 
-module.exports = { addSlot , changeFault }
+
+module.exports = { addSlot , changeFault , getSlot, addFault }
