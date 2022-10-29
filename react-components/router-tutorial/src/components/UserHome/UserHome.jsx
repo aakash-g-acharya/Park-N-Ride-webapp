@@ -189,6 +189,131 @@ export default function UserHome() {
         </div>
       </div>
 
+      <div className="container p-5" id="rvws">
+        <div className="row" style={{ height: "10vh" }}></div>
+        <div className="row d-flex justify-content-center">
+          <div
+            id="carouselExampleControls"
+            className="carousel slide"
+            data-ride="carousel"
+          >
+            <div className="carousel-inner">
+              <div
+                className="carousel-item active"
+                style={{ backgroundColor: secondaryColor }}
+              >
+                {/* <img src={require("./images/menu_icon.png")} className="d-block w-100" alt="..."/> */}
+                <div
+                  className="row d-flex justify-content-center align-items-center"
+                  style={{ height: "75vh", width: "75vw" }}
+                >
+                  <div className="jumbotron">
+                    <h1 className="display-4">Hello, world!</h1>
+                    <p className="lead">
+                      This is a simple hero unit, a simple jumbotron-style
+                      component for calling extra attention to featured content
+                      or information.
+                    </p>
+                    <hr className="my-4" />
+                    <p>
+                      It uses utility classes for typography and spacing to
+                      space content out within the larger container.
+                    </p>
+                    <a
+                      className="btn btn-primary btn-lg"
+                      href="/UserHome"
+                      role="button"
+                    >
+                      Learn more
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="carousel-item" style={{ backgroundColor: secondaryColor }}>
+                <div
+                  className="row d-flex justify-content-center align-items-center"
+                  style={{ height: "75vh", width: "75vw" }}
+                >
+                  <div className="jumbotron">
+                    <h1 className="display-4">Hello, world!</h1>
+                    <p className="lead">
+                      This is a simple hero unit, a simple jumbotron-style
+                      component for calling extra attention to featured content
+                      or information.
+                    </p>
+                    <hr className="my-4" />
+                    <p>
+                      It uses utility classes for typography and spacing to
+                      space content out within the larger container.
+                    </p>
+                    <a
+                      className="btn btn-primary btn-lg"
+                      href="/UserHome"
+                      role="button"
+                    >
+                      Learn more
+                    </a>
+                  </div>
+                </div>{" "}
+                {/* <img src={require("./images/logo.png")} className="d-block w-100" alt="..."/> */}
+              </div>
+              <div className="carousel-item" style={{ backgroundColor: secondaryColor }}>
+                <div
+                  className="row d-flex justify-content-center align-items-center"
+                  style={{ height: "75vh", width: "75vw" }}
+                >
+                  <div className="jumbotron">
+                    <h1 className="display-4">Hello, world!</h1>
+                    <p className="lead">
+                      This is a simple hero unit, a simple jumbotron-style
+                      component for calling extra attention to featured content
+                      or information.
+                    </p>
+                    <hr className="my-4" />
+                    <p>
+                      It uses utility classes for typography and spacing to
+                      space content out within the larger container.
+                    </p>
+                    <a
+                      className="btn btn-primary btn-lg"
+                      href="/UserHome"
+                      role="button"
+                    >
+                      Learn more
+                    </a>
+                  </div>
+                </div>
+                {/* <img src={require("./images/logo.png")} className="d-block w-100" alt="..."/> */}
+              </div>
+            </div>
+            <a
+              className="carousel-control-prev"
+              href="#carouselExampleControls"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#carouselExampleControls"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="container p-5">
         <div
           className="row d-flex justify-content-center align-items-center"
