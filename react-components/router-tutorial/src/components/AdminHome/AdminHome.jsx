@@ -33,22 +33,17 @@ export default function AdminHome() {
 
         <div className="col-4">
           <div className="row">
-            <div className="col-3">
+            <div className="col-4">
               <a className="nav-link p-3" href="#actions">
                 Actions
               </a>
             </div>
-            <div className="col-3">
-              <a className="nav-link p-3" href="#srvcs">
-                Services
-              </a>
-            </div>
-            <div className="col-3">
+            <div className="col-4">
               <a className="nav-link p-3" href="#rvws">
                 Reviews
               </a>
             </div>
-            <div className="col-3">
+            <div className="col-4">
               <a className="nav-link p-3" href="#fdbck">
                 Feedback
               </a>
@@ -160,6 +155,59 @@ export default function AdminHome() {
                   form, by injected humour, or randomised words which don't look
                   even slightly believable
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="col-6" style={{height:"64vh",width:"72vw"}}></div>
+      </div>
+
+      <div className="container p-5">
+        <div
+          className="row d-flex justify-content-center align-items-center"
+          style={{ height: "75vh" }}
+          id="fdbck"
+        >
+          <div className="col-2"></div>
+          <div className="col-4">
+            <div className="col feedback_alert">
+              <h1>Your</h1>
+              <h1>Feedback</h1>
+              <h1>is our</h1>
+              <h1>Priority !</h1>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="row d-flex justify-content-center">
+              <div className="wrapper">
+                <h3 style={{ textAlign: "center" }}>Feedback Form</h3>
+                <div id="error_message"></div>
+                <form id="myform" onsubmit="return validate();">
+                  <div className="input_field">
+                    <input type="text" placeholder="First Name" id="fname" />
+                  </div>
+                  <div className="input_field">
+                    <input type="text" placeholder="Last Name" id="lname" />
+                  </div>
+                  <div className="input_field">
+                    <input type="text" placeholder="Phone" id="phone" />
+                  </div>
+                  <div className="input_field">
+                    <input type="text" placeholder="Email" id="email" />
+                  </div>
+                  <div className="input_field">
+                    <textarea
+                      placeholder="Your Feedback"
+                      id="yourfeedback"
+                    ></textarea>
+                  </div>
+                  <div className="btn">
+                    <input type="submit" />
+                  </div>
+                </form>
               </div>
             </div>
           </div>
