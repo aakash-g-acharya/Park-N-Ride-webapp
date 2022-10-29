@@ -6,7 +6,7 @@ router.post("/generate", ticketGenerate);
 
 router.post("/addService", addServiceToTicket);
 
-router.get("/checkout", checkout);
+router.post("/checkout", checkout);
 
 router.post("/payment", paymentDone);
 

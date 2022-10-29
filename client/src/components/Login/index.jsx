@@ -1,23 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
+
+	const navigate = useNavigate();
+
+	// useEffect (()=>{
+	// 	const user = localStorage.getItem("userID");
+	// 	if(user){
+	// 		navigate("/dashboard")
+	// 	}
+	// 	console.log(user)
+	// },[])
+
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "localhost:8080/api/admin/login";
-			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/";
+			const url = "http://localhost:8080/api/user/login";
+			const resp = await axios.post(url, data);
+			console.log(resp.data)
+			if(resp.data.message==='logged in successfully')
+			{localStorage.setItem("userID", resp.data.store);
+			localStorage.setItem("userIDT", resp.data.id);
+			navigate("/dashboard");}
+
+
 		} catch (error) {
 			if (
 				error.response &&
@@ -64,6 +82,12 @@ const Login = () => {
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
+						</button>
+					</Link>
+					<div style={{height:"50px"}}></div>
+					<Link to="/adminLogin">
+						<button type="button" className={styles.white_btn}>
+							Sign in as admin
 						</button>
 					</Link>
 				</div>

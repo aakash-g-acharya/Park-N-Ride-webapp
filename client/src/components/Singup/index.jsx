@@ -5,8 +5,9 @@ import styles from "./styles.module.css";
 
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		name: "",
+		phone:"",
+		address: "",
 		email: "",
 		password: "",
 	});
@@ -20,10 +21,15 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
-			const { data: res } = await axios.post(url, data);
-			navigate("/login");
-			console.log(res.message);
+			const url = "http://localhost:8080/api/user/register";
+			const resp = await axios.post(url, data);
+			
+			if(resp.data.message==='User created successfully')
+			{localStorage.setItem("userID", resp.data.store);
+			localStorage.setItem("userIDT", resp.data.id);
+			navigate("/dashboard");}
+			
+
 		} catch (error) {
 			if (
 				error.response &&
@@ -39,10 +45,10 @@ const Signup = () => {
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
-					<h1>Welcome Back</h1>
+					<h1>Have an account?</h1>
 					<Link to="/login">
 						<button type="button" className={styles.white_btn}>
-							Sign in
+							Login in
 						</button>
 					</Link>
 				</div>
@@ -52,18 +58,27 @@ const Signup = () => {
 						<input
 							type="text"
 							placeholder="First Name"
-							name="firstName"
+							name="name"
 							onChange={handleChange}
-							value={data.firstName}
+							value={data.name}
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
-							placeholder="Last Name"
-							name="lastName"
+							placeholder="Phone"
+							name="phone"
 							onChange={handleChange}
-							value={data.lastName}
+							value={data.phone}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="text"
+							placeholder="Address"
+							name="address"
+							onChange={handleChange}
+							value={data.address}
 							required
 							className={styles.input}
 						/>

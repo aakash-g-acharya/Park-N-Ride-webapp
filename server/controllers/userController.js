@@ -10,9 +10,9 @@ const registerUser = async (req,res) => {
 				.send({ message: "User with given email already Exist!" });
 
 		await new User({ ...req.body}).save();
-		res.status(201).send({ message: "User created successfully",store:req.body.email });
+		res.status(201).send({ message: "User created successfully",store:req.body.email,id:user._id });
 	} catch (error) {
-        console.log(req)
+        console.log(req.body)
 		res.status(500).send({ message: "Internal Server Error",error:error,store:req.body.email });
 	}
 }
@@ -28,7 +28,7 @@ const loginUser = async (req,res) => {
 		if(user.password!=req.body.password)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 
-		res.status(200).send({ message: "logged in successfully",store:req.body.email });
+		res.status(200).send({ message: "logged in successfully",store:req.body.email,id:user._id });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error",error:error });
 	}
