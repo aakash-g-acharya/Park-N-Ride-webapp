@@ -24,19 +24,19 @@ export default function UserHome() {
 
 	const handleLogout = () => {
 		localStorage.removeItem("userID");
+    localStorage.removeItem("userIDT");
 		navigate("/login");
 	};
 
 
 
     const getProfile = ()=>{
-      navigate("/Profile");
+      navigate("/profile");
     }
 
     const getTicket = ()=>{
-      navigate("/Ticket");
+      navigate("/ticket");
     }
-
 
 
   return (

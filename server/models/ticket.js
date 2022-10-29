@@ -19,11 +19,11 @@ const ticketSchema = new mongoose.Schema({
         required: true
     },
 	inTime: {
-        type: Date,
+        type: String,
         required: true
     },
     outTime: {
-        type: Date
+        type: String
     },
     paymentStatus: {
         type: Boolean,

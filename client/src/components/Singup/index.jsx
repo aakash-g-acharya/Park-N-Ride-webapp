@@ -26,8 +26,9 @@ const Signup = () => {
 			
 			if(resp.data.message==='User created successfully')
 			{localStorage.setItem("userID", resp.data.store);
+			localStorage.setItem("userIDT", resp.data.id);
 			navigate("/dashboard");}
-			console.log(resp.data)
+			
 
 		} catch (error) {
 			if (

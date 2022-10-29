@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link , useNavigate} from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
+
+	const navigate = useNavigate();
+
+	useEffect (()=>{
+		const user = localStorage.getItem("userID");
+		if(user){
+			navigate("/dashboard")
+		}
+		console.log(user)
+	},[])
+
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
@@ -11,7 +22,6 @@ const Login = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
-	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -21,6 +31,7 @@ const Login = () => {
 			console.log(resp.data)
 			if(resp.data.message==='logged in successfully')
 			{localStorage.setItem("userID", resp.data.store);
+			localStorage.setItem("userIDT", resp.data.id);
 			navigate("/dashboard");}
 
 
