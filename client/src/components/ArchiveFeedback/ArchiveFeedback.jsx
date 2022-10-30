@@ -12,19 +12,25 @@ export default function ArchiveFeedback() {
   const navigate = useNavigate();
   const [feedbackInfo, setfeedbackInfo] = useState(null);
 
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+
   useEffect(async () => {
     try {
       const user = localStorage.getItem("userID");
       if (!user) {
-        navigate("/");
+        navigate("/adminLogin");
       }
 
       const url = "http://localhost:8080/api/feedback/viewFeedback";
-      var resp = await axios.get(url,{"status":false});
+      var resp = await axios.post(url,{status:false});
       resp = resp.data;
       if (resp.message) {
         console.log(resp);
-        setfeedbackInfo(resp.data);
+        setfeedbackInfo(resp.reviews);
       }
     } catch (error) {
       if (
@@ -64,7 +70,7 @@ export default function ArchiveFeedback() {
           />
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>
@@ -139,13 +145,14 @@ export default function ArchiveFeedback() {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">User ID</th>
                     <th scope="col">Request Type</th>
                     <th scope="col">Comments</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {tdData}
+                  {tdData()}
                 </tbody>
               </table>
               </div>

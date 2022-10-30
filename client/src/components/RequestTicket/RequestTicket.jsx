@@ -12,36 +12,34 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function RequestTicket() {
   const navigate = useNavigate();
 
-
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
 
   const navigateToNextPage = () => {
     navigate("/service");
   };
 
   const handleLogout = () => {
-		localStorage.removeItem("userID");
+    localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/");
-	};
+    navigate("/");
+  };
 
-  useEffect (async () => {
-    
+  useEffect(async () => {
     try {
       const user = localStorage.getItem("userIDT");
-		  if(!user){
-			navigate("/")
-		  }
-      const data = {
-        "userID":user
+      if (!user) {
+        navigate("/");
       }
+      const data = {
+        userID: user,
+      };
 
-			const url = "http://localhost:8080/api/ticket/generate";
-			var resp = await axios.post(url, data);
-      resp = resp.data
-      
-			if(resp.message==='Ticket exists')
-			{
+      const url = "http://localhost:8080/api/ticket/generate";
+      var resp = await axios.post(url, data);
+      resp = resp.data;
+
+      if(resp.message==='Ticket exists')
+      {
         navigate("/payment");
       }
       else if(resp.message==="Ticket created successfully"){
@@ -52,24 +50,16 @@ export default function RequestTicket() {
         alert("Sorry no slots available!!");
         navigate("/dashboard")
       }
-
-
-
-
-
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				console.log(error.response.message);
-			}
-		}
-
-  },[]);
-
-
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        console.log(error.response.message);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -95,7 +85,7 @@ export default function RequestTicket() {
           </span>
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick={handleLogout}>
+          <button className="white_btn" onClick={handleLogout} disabled>
             Logout
           </button>
         </div>
@@ -118,26 +108,27 @@ export default function RequestTicket() {
           >
             <div className="col">
               <div className="row d-flex justify-content-center py-2">
-                <div className="card fl-left">
-                  <div className="date">
-                    {/* <time datetime="23th feb">
-                      <span>PARK</span>
-                    </time> */}
-                  </div>
-                  <div className="card-cont">
-                    <small>TICKET-ID : {data && localStorage.getItem("ticketID")}</small>
-                    <h3>VEHICLE NO:{data && data.vehicleNo}</h3>
-                    <div className="even-date">
-                      <i className="fa fa-calendar"></i>
-                      <time>
-                        <span> {data && data.inTime}</span>
-                      </time>
-                    </div>
-                    <div className="even-info">
-                      <i className="fa fa-map-marker"></i>
-                      <p>PARK N RIDE COMPLEX, BANGALORE</p>
-                    </div>
-                  </div>
+                <div className="row" >
+                  <table class="table table-bordered table-dark table-hover" style={{width:"24vw"}}>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Ticket ID</th>
+                        <td>{data && localStorage.getItem("ticketID")}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Vehicle N.O.</th>
+                        <td>{data && data.vehicleNo}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">In Time</th>
+                        <td>{data && data.inTime}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Location</th>
+                        <td>BANGALORE</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 

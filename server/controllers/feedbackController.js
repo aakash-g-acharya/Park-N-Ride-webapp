@@ -2,8 +2,8 @@ const { Feedbacks } = require("../models/feedback");
 
 const viewFeedback = async (req, res) => {
   try {
-    const reviews = await Feedbacks.findMany({status:req.body.status});
-
+    const reviews = await Feedbacks.find({ status: req.body.status });
+    console.log("/",reviews);
     res.status(201).send({ message: "Feedback sent", reviews });
   } catch (error) {
     console.log(req.body);
@@ -23,8 +23,11 @@ const addFeedback = async (req, res) => {
 
 const changeFeedbackStatus = async (req, res) => {
   try {
-    const feedbackStatus = await Feedbacks.findOne({ userID:req.body.UserID ,status: true });
-    console.log(feedbackStatus);
+    const feedbackStatus = await Feedbacks.findOne({
+      userID: req.body.UserID,
+      status: true,
+    });
+    console.log("/",feedbackStatus);
     feedbackStatus.status = false;
     await feedbackStatus.save();
     res.status(201).send({ message: "Archived Feedback!", id: req.body.id });

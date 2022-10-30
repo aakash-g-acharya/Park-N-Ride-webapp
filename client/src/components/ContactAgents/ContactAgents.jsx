@@ -1,6 +1,7 @@
 import "./style.css"
 
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
@@ -9,6 +10,12 @@ const bannerColor = "rgb(197, 124, 28)";
 
 export default function ContactAgents() {
   const navigate = useNavigate();
+  useEffect(()=>{
+    const user = localStorage.getItem("userID");
+		  if(!user){
+			navigate("/adminLogin")
+		  }
+  },[])
 
   const handleLogout = ()=>{
     localStorage.removeItem("userID");

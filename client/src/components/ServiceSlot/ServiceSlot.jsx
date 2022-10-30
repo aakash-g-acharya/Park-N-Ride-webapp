@@ -11,10 +11,14 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function ServiceSlot() {
   const navigate = useNavigate();
 
-  const slotArray1=[29,25,17,9,10,18,27,30]
-  const slotArray2=[21,13,5,1,2,6,14,22]
-  const slotArray3=[23,15,7,3,4,8,16,24]
-  const slotArray4=[31,26,19,11,12,20,28,32]
+  const slotArray1l=[29,25,17,9]
+  const slotArray1r=[10,18,27,30]
+  const slotArray2l=[21,13,5,1]
+  const slotArray2r=[2,6,14,22]
+  const slotArray3l=[23,15,7,3]
+  const slotArray3r=[4,8,16,24]
+  const slotArray4l=[31,26,19,11]
+  const slotArray4r=[12,20,28,32]
 
 
   const [slots,setSlots] = useState(null)
@@ -24,6 +28,11 @@ export default function ServiceSlot() {
     
     try {
       
+
+      const user = localStorage.getItem("userID");
+		  if(!user){
+			navigate("/adminLogin")
+		  }
 
 			const url = "http://localhost:8080/api/slot/getSlot";
 			var resp = await axios.get(url);
@@ -134,7 +143,7 @@ export default function ServiceSlot() {
                     <tr>
                     <td className="text-center"></td>
 
-                      {slots&&slotArray1.map(item=>{
+                      {slots&&slotArray1l.map(item=>{
                         return <SlotsMap id={item} obj={slots.find(obj => {
                           return obj.id === item
                         })} change={changeFaultSlot} />
@@ -142,41 +151,75 @@ export default function ServiceSlot() {
 
                     <td className="text-center"></td>
 
+                    {slots&&slotArray1r.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                      <td className="text-center"></td>
+
                     </tr>
                     <tr>
                     <td className="text-center"></td>
 
-                      {slots&&slotArray2.map(item=>{
+                      {slots&&slotArray2l.map(item=>{
                         return <SlotsMap id={item} obj={slots.find(obj => {
                           return obj.id === item
                         })} change={changeFaultSlot} />
                       })}
 
                     <td className="text-center"></td>
+
+                    {slots&&slotArray2r.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                      <td className="text-center"></td>
+
                     </tr>
-                    <div style={{height:"50px"}}></div>
+                    <tr><td></td></tr>
                     <tr>
                     <td className="text-center"></td>
 
-                        {slots&&slotArray3.map(item=>{
-                          return <SlotsMap id={item} obj={slots.find(obj => {
-                            return obj.id === item
-                          })} change={changeFaultSlot} />
-                        })}
+                      {slots&&slotArray3l.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
 
-                        <td className="text-center"></td>
+                    <td className="text-center"></td>
+
+                    {slots&&slotArray3r.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                      <td className="text-center"></td>
+
                     </tr>
                     <tr>
                     <td className="text-center"></td>
 
-                        {slots&&slotArray4.map(item=>{
-                          return <SlotsMap id={item} obj={slots.find(obj => {
-                            return obj.id === item
-                          })} change={changeFaultSlot} />
-                        })}
+                      {slots&&slotArray4l.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
 
-                        <td className="text-center"></td>
-                      
+                    <td className="text-center"></td>
+
+                    {slots&&slotArray4r.map(item=>{
+                        return <SlotsMap id={item} obj={slots.find(obj => {
+                          return obj.id === item
+                        })} change={changeFaultSlot} />
+                      })}
+
+                      <td className="text-center"></td>
+
                     </tr>
                   </tbody>
                 </table>

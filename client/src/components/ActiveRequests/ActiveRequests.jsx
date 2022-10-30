@@ -11,15 +11,21 @@ export default function ActiveRequests() {
   const navigate = useNavigate();
   const [requestInfo, setRequestInfo] = useState(null);
 
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+  
   useEffect(async () => {
     try {
       const user = localStorage.getItem("userID");
       if (!user) {
-        navigate("/");
+        navigate("/adminLogin");
       }
 
       const url = "http://localhost:8080/api/userRequest/viewUserRequest";
-      var resp = await axios.get(url,{params:{"status":true}});
+      var resp = await axios.get(url,{params:{status:true}});
       resp = resp.data;
       if (resp.message) {
         console.log(resp);
@@ -119,7 +125,7 @@ export default function ActiveRequests() {
           />
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>

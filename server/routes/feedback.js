@@ -4,7 +4,7 @@ const { addFeedback , viewFeedback , changeFeedbackStatus } = require("../contro
 
 router.post("/addFeedback", addFeedback);
 
-router.get("/viewFeedback", viewFeedback);
+router.post("/viewFeedback", viewFeedback);
 
 router.post("/updateFeedback", changeFeedbackStatus);
 

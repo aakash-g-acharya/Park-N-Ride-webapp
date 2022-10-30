@@ -20,7 +20,7 @@ const updateUserRequest = async (req, res) => {
       ticketID: req.body.ticketId,
     });
 
-    // console.log(req.body.ticketId);
+    console.log(req.body.ticketId);
     console.log(requestToUpdate);
     requestToUpdate.status = false;
 

@@ -66,8 +66,8 @@ export default function ServiceSlot(props) {
           <button id={props.id} type="button" className={`btn m-1 ${props.obj.status==="occupy"?" btn-danger ":""} 
           ${props.obj.status==="vacant"?" btn-success ":""}
           ${props.obj.status==="faulty"?" btn-warning ":""}
-          `}  onClick={props.obj.status==="faulty"?change:undefined}>
-            {props.id<10?"0"+props.id:props.id}
+          `}  onClick={props.obj.status==="faulty"?change:undefined} data-toggle="tooltip" data-placement="top" title={`Slot ID : ${props.obj.id}`}>
+            {"0"+props.obj.allocValue}
           </button>
         </td>
     </>     

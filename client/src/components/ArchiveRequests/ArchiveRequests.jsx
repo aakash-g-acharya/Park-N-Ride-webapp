@@ -12,11 +12,16 @@ export default function ArchiveRequests() {
   const navigate = useNavigate();
   const [requestInfo, setRequestInfo] = useState(null);
 
+  const handleLogout = ()=>{
+    localStorage.removeItem("userID");
+		navigate("/adminLogin");
+  }
+
   useEffect(async () => {
     try {
       const user = localStorage.getItem("userID");
       if (!user) {
-        navigate("/");
+        navigate("/adminLogin");
       }
 
       const url = "http://localhost:8080/api/userRequest/viewUserRequest";
@@ -88,7 +93,7 @@ export default function ArchiveRequests() {
           />
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick="exit();">
+          <button className="white_btn" onClick={handleLogout}>
             Logout
           </button>
         </div>

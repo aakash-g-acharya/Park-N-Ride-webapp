@@ -11,53 +11,43 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function Services() {
   const navigate = useNavigate();
 
-  const [services, setServices] = useState({ "wash": 0, "fuel": 0, "tyre":0 });
+  const [services, setServices] = useState({ wash: 0, fuel: 0, tyre: 0 });
 
   const handleLogout = () => {
-		localStorage.removeItem("userID");
+    localStorage.removeItem("userID");
     localStorage.removeItem("userIDT");
-		navigate("/");
-	};
-
-  const navigateToNextPage = async () => {
-
-    const data = {
-      "userID":localStorage.getItem("userIDT"),
-      "carWashStatus":services.wash,
-      "fuelStatus":services.fuel,
-      "tyreworkStatus":services.tyre
-    }
-    const url = "http://localhost:8080/api/ticket/addService";
-			var resp = await axios.post(url, data);
-      resp = resp.data
-      
-			if(resp.message==='No Ticket exists')
-			{
-        navigate("/dashboard");
-      }
-      else{
-        navigate("/payment");
-      }
-    
+    navigate("/");
   };
 
-  
+  const navigateToNextPage = async () => {
+    const data = {
+      userID: localStorage.getItem("userIDT"),
+      carWashStatus: services.wash,
+      fuelStatus: services.fuel,
+      tyreworkStatus: services.tyre,
+    };
+    const url = "http://localhost:8080/api/ticket/addService";
+    var resp = await axios.post(url, data);
+    resp = resp.data;
+
+    if (resp.message === "No Ticket exists") {
+      navigate("/dashboard");
+    } else {
+      navigate("/payment");
+    }
+  };
 
   const handleCart = (event) => {
     const btn = document.getElementById(event.currentTarget.id);
-    const target = event.currentTarget
-    if(btn.innerText==="Add to Cart")
-    {
-
+    const target = event.currentTarget;
+    if (btn.innerText === "Add to Cart") {
       setServices({ ...services, [target.name]: 1 });
-      btn.innerText="Remove from Cart";
-      console.log(services)
-      
-    }
-    else{
+      btn.innerText = "Remove from Cart";
+      console.log(services);
+    } else {
       setServices({ ...services, [target.name]: 0 });
-      btn.innerText="Add to Cart";
-      console.log(services)
+      btn.innerText = "Add to Cart";
+      console.log(services);
     }
   };
 
@@ -85,7 +75,7 @@ export default function Services() {
           </span>
         </div>
         <div className="col-3 px-2 d-flex justify-content-end">
-          <button className="white_btn" onClick={handleLogout}>
+          <button className="white_btn" disabled>
             Logout
           </button>
         </div>

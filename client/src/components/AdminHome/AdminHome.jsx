@@ -1,4 +1,5 @@
 // import {Link} from "react-router-dom";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./style1.css";
@@ -14,6 +15,13 @@ const secondaryColor = "rgb(9, 67, 95)";
 export default function AdminHome() {
 
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const user = localStorage.getItem("userID");
+		  if(!user){
+			navigate("/adminLogin")
+		  }
+  },[])
 
   const handleLogout = ()=>{
     localStorage.removeItem("userID");
@@ -95,11 +103,9 @@ export default function AdminHome() {
                 <h2>
                   <strong className="yellow">Admin </strong>Dashboard
                 </h2>
-                <span>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majorityomised words which don't look even
-                  slightly believable
-                </span>
+                <h3>
+                  Park N Ride, Bengaluru welcomes you! 
+                </h3>
               </div>
             </div>
           </div>
@@ -113,10 +119,7 @@ export default function AdminHome() {
                 <br />
                 <br />
                 <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable
+                   An admin profile is a collection of settings and information associated with a admin. It contains critical information that is used to identify an individual, such as their name, age, portrait photograph and individual characteristics such as knowledge or expertise.
                 </p>
               </div>
             </div>
@@ -127,10 +130,8 @@ export default function AdminHome() {
                 <br />
                 <br />
                 <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable
+                  In search of external service agencies? Why worry, when we are here. We help you by reaching out the finest third party service agencies to get your work done in minutes.
+                  Visit here to contact the service agencies you may like!  
                 </p>
               </div>
             </div>
@@ -143,10 +144,7 @@ export default function AdminHome() {
                 <br />
                 <br />
                 <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable
+                  This section allows you to check and take action on any pending service requests raised by user. You could also take action on any feedbacks provided by users to develop the Park N Ride complex and improve customer's experience.
                 </p>
               </div>
             </div>
@@ -157,10 +155,7 @@ export default function AdminHome() {
                 <br />
                 <br />
                 <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable
+                  It displays the visual layout of the Park N Ride complex in detail. Each is parking slot's status is displayed (vacant, occupied, faulty). You could also update the faulty slot's status on servicing it.
                 </p>
               </div>
             </div>

@@ -51,7 +51,7 @@ const Login = () => {
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<h1>ADMIN LOGIN</h1>
 						<input
 							type="email"
 							placeholder="Email"
@@ -76,10 +76,30 @@ const Login = () => {
 						</button>
 					</form>
 				</div>
-				<div className={styles.right}>
+				{/* <div className={styles.right}>
 					<Link to="/adminSignup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
+						</button>
+					</Link>
+					<div style={{height:"20px"}}></div>
+					<Link to="/">
+						<button type="button" className={styles.white_btn}>
+							Sign in as User
+						</button>
+					</Link>
+				</div> */}
+				<div className={styles.right}>
+					<h1>New Here ?</h1>
+					<Link to="/adminSignup">
+						<button type="button" className={styles.white_btn}>
+							Sign up as Admin
+						</button>
+					</Link>
+					<div style={{height:"50px"}}></div>
+					<Link to="/">
+						<button type="button" className={styles.white_btn}>
+							Sign in as User
 						</button>
 					</Link>
 				</div>
