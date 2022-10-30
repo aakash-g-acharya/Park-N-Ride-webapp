@@ -1,36 +1,38 @@
-const {UserRequests} = require("../models/userRequests")
+const { UserRequests } = require("../models/userRequests");
 
-const viewUserRequest = async (req,res) => {
-    try {
-		
+const viewUserRequest = async (req, res) => {
+  try {
+    const requestsList = await UserRequests.find({ status: req.query.status });
+    // console.log(req.query.status);
 
-            const requestsList = await UserRequests.find({});
+    res
+      .status(200)
+      .send({ message: "List of requests sent", data: requestsList });
+  } catch (error) {
+    console.log(req.body);
+    res.status(500).send({ message: "Internal Server Error", error: error });
+  }
+};
 
-            res.status(200).send({ message: "List of requests sent" , data:requestsList});
+const updateUserRequest = async (req, res) => {
+  try {
+    const requestToUpdate = await UserRequests.findOne({
+      ticketID: req.body.ticketId,
+    });
 
-	} catch (error) {
-        console.log(req.body)
-		res.status(500).send({ message: "Internal Server Error",error:error });
-	}
-}
+    // console.log(req.body.ticketId);
+    console.log(requestToUpdate);
+    requestToUpdate.status = false;
 
+    await requestToUpdate.save();
 
-const updateUserRequest = async (req,res) => {
-    try {
-		
-        const requestToUpdate = await UserRequests.findOne({ticketID:req.body.id});
+    res
+      .status(200)
+      .send({ message: "Request status updated", id: req.body.ticketID });
+  } catch (error) {
+    console.log(req.body);
+    res.status(500).send({ message: "Internal Server Error", error: error });
+  }
+};
 
-        console.log(requestToUpdate)
-        requestToUpdate.status = true;
-
-        await requestToUpdate.save();
-
-		res.status(200).send({ message: "Request status updated" ,id:req.body.id});
-	} catch (error) {
-        console.log(req.body)
-		res.status(500).send({ message: "Internal Server Error",error:error });
-	}
-}
-
-
-module.exports = { updateUserRequest , viewUserRequest }
+module.exports = { updateUserRequest, viewUserRequest };

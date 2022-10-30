@@ -1,9 +1,90 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
 const layoutColor = "antiquewhite";
 const bannerColor = "rgb(197, 124, 28)";
 
 export default function ActiveFeedback() {
+
+  const navigate = useNavigate();
+  const [feedbackInfo, setfeedbackInfo] = useState(null);
+
+  useEffect(async () => {
+    try {
+      const user = localStorage.getItem("userID");
+      if (!user) {
+        navigate("/");
+      }
+
+      const url = "http://localhost:8080/api/feedback/viewFeedback";
+      var resp = await axios.get(url,{"status":true});
+      resp = resp.data;
+      if (resp.message) {
+        console.log(resp);
+        setfeedbackInfo(resp.data);
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        console.log(error.response.message);
+      }
+    }
+  }, []);
+
+  const archiveFeedback = async (event)=>{
+    
+      const url = "http://localhost:8080/api/feedback/changeFeedbackStatus";
+
+      // console.log("clicked!")
+
+      const idx = event.currentTarget.id;
+
+      // console.log(idx);
+
+			var resp = await axios.post(url, {"UserID":idx});
+      resp = resp.data
+
+      // console.log(resp.message);  
+      
+			if(resp.message==='Archived Feedback')
+			{
+        alert("Archived feedback successfully!");
+        window.location.reload();
+      }
+      else
+      {
+        alert("Please try again later!");
+        window.location.reload();
+      }
+  }
+
+  const tdData = () => {
+    return feedbackInfo&&feedbackInfo.map((data,index) => {
+
+      return (
+        <tr>
+          <th scope="row">{index+1}</th>
+          <td>{feedbackInfo && data.userID}</td>
+          <td>Feedback</td>
+          <td>{data.comments}</td>
+          <td>
+            <button type="button" className="btn btn-danger btn-sm" id={data.userID} onClick={archiveFeedback}>
+              Take Action
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  };
+
+
+
   return (
     <>
       <div className="navbar">
@@ -45,7 +126,7 @@ export default function ActiveFeedback() {
                   aria-label="Basic mixed styles example"
                 >
                   <a
-                    href="/ActiveRequests"
+                    href="/activeRequests"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -53,7 +134,7 @@ export default function ActiveFeedback() {
                     Active Requests
                   </a>
                   <a
-                    href="/ActiveFeedback"
+                    href="/activeFeedback"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -61,7 +142,7 @@ export default function ActiveFeedback() {
                     Active Feedbacks
                   </a>
                   <a
-                    href="/AdminHome"
+                    href="/adminHome"
                     className="btn btn-success btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -69,7 +150,7 @@ export default function ActiveFeedback() {
                     Home Page
                   </a>
                   <a
-                    href="/ArchiveRequests"
+                    href="/archiveRequests"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -77,7 +158,7 @@ export default function ActiveFeedback() {
                     Archive Requests
                   </a>
                   <a
-                    href="/ArchiveFeedback"
+                    href="/archiveFeedback"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -97,36 +178,7 @@ export default function ActiveFeedback() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Feedback</td>
-                      <td>Otto</td>
-                      <td>
-                        <button type="button" className="btn btn-danger btn-sm">
-                          Take Action
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Feedback</td>
-                      <td>Thornton</td>
-                      <td>
-                        <button type="button" className="btn btn-danger btn-sm">
-                          Take Action
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Feedback</td>
-                      <td>Thornton</td>
-                      <td>
-                        <button type="button" className="btn btn-danger btn-sm">
-                          Take Action
-                        </button>
-                      </td>
-                    </tr>
+                    {tdData}
                   </tbody>
                 </table>
               </div>

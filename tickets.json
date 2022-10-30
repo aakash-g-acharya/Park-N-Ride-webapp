@@ -1,0 +1,319 @@
+[{
+  "_id": {
+    "$oid": "6353a4058b5e8cdfb055264a"
+  },
+  "userID": {
+    "$oid": "6352d2089130eeb3c212b5bf"
+  },
+  "vehicleNo": "1234",
+  "slotID": 1,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:04:21.046Z"
+  },
+  "paymentStatus": false,
+  "paymentCharge": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a4298b5e8cdfb055264f"
+  },
+  "userID": {
+    "$oid": "6352d23bfb85b5a628bfcceb"
+  },
+  "vehicleNo": "1234",
+  "slotID": 2,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:04:57.282Z"
+  },
+  "paymentStatus": false,
+  "paymentCharge": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a4918b5e8cdfb0552664"
+  },
+  "userID": {
+    "$oid": "6353a4568b5e8cdfb0552656"
+  },
+  "vehicleNo": "1234",
+  "slotID": 4,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:06:41.401Z"
+  },
+  "paymentStatus": false,
+  "paymentCharge": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a49c8b5e8cdfb0552669"
+  },
+  "userID": {
+    "$oid": "6353a45c8b5e8cdfb0552659"
+  },
+  "vehicleNo": "1234",
+  "slotID": 5,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:06:52.786Z"
+  },
+  "paymentStatus": false,
+  "paymentCharge": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a9f1f7ccabc5dfa809b6"
+  },
+  "userID": {
+    "$oid": "6353a4ba8b5e8cdfb055266d"
+  },
+  "vehicleNo": "1234",
+  "slotID": 6,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:29:37.861Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 500,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-22T10:46:37.210Z"
+  }
+},{
+  "_id": {
+    "$oid": "6353aa6bf7ccabc5dfa809c9"
+  },
+  "userID": {
+    "$oid": "6353aa13f7ccabc5dfa809ba"
+  },
+  "vehicleNo": "1234",
+  "slotID": 3,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-22T08:31:39.560Z"
+  },
+  "paymentStatus": false,
+  "paymentCharge": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635ae3c6195a3ca5b4c04802"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-27T20:02:14.613Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:16:31.214Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c2c84b50b30392cc4750a"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-28T19:24:52.082Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:27:47.721Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c2d6edef67db132b5950e"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-28T19:28:46.176Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:29:04.194Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c2e269b73475559bce4ca"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-28T19:31:50Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:32:01.790Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c30a852b0695794c506ca"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-28T19:42:32.686Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:44:48.010Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c31e152b0695794c5077a"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": {
+    "$date": "2022-10-28T19:47:45.687Z"
+  },
+  "paymentStatus": true,
+  "paymentCharge": 300,
+  "__v": 0,
+  "outTime": {
+    "$date": "2022-10-28T19:50:24.607Z"
+  }
+},{
+  "_id": {
+    "$oid": "635c9d5e7e19c345dde90986"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": "10/29/2022 8:56:22",
+  "paymentStatus": true,
+  "paymentCharge": 315,
+  "__v": 0,
+  "outTime": "10/29/2022 8:59:15"
+},{
+  "_id": {
+    "$oid": "635c9e467e19c345dde90997"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": "10/29/2022 9:0:14",
+  "paymentStatus": true,
+  "paymentCharge": 415,
+  "__v": 0,
+  "outTime": "10/29/2022 9:1:4"
+},{
+  "_id": {
+    "$oid": "635c9ec37e19c345dde91716"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": "10/29/2022 9:2:19",
+  "paymentStatus": true,
+  "paymentCharge": 65,
+  "__v": 0,
+  "outTime": "10/29/2022 9:2:31"
+},{
+  "_id": {
+    "$oid": "635cf34cc56fa48cb0acce4c"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 8,
+  "phone": 123456,
+  "inTime": "10/29/2022 15:3:0",
+  "paymentStatus": true,
+  "paymentCharge": 115,
+  "__v": 0,
+  "outTime": "10/29/2022 15:3:38"
+},{
+  "_id": {
+    "$oid": "635cf5dec56fa48cb0acce88"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 9,
+  "phone": 123456,
+  "inTime": "10/29/2022 15:13:58",
+  "paymentStatus": true,
+  "paymentCharge": 165,
+  "__v": 0,
+  "outTime": "10/29/2022 15:15:7"
+},{
+  "_id": {
+    "$oid": "635cfcd2c9e6af48474ccc2c"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 9,
+  "phone": 123456,
+  "inTime": "10/29/2022 15:43:38",
+  "paymentStatus": true,
+  "paymentCharge": 365,
+  "__v": 0,
+  "outTime": "10/29/2022 15:45:22"
+},{
+  "_id": {
+    "$oid": "635d3d9f207e34376d2964fb"
+  },
+  "userID": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "vehicleNo": "1234",
+  "slotID": 5,
+  "phone": 123456,
+  "inTime": "10/29/2022 20:20:7",
+  "paymentStatus": true,
+  "paymentCharge": 115,
+  "__v": 0,
+  "outTime": "10/29/2022 20:21:11"
+}]

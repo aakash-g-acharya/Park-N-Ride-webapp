@@ -13,6 +13,10 @@ import AdminHome from "./components/AdminHome/AdminHome";
 import ContactAgents from "./components/ContactAgents/ContactAgents"
 import AdminProfile from "./components/AdminProfile/Profile"
 import ServiceSlot from "./components/ServiceSlot/ServiceSlot"
+import ActiveRequests from "./components/ActiveRequests/ActiveRequests";
+import ActiveFeedback from "./components/ActiveFeedback/ActiveFeedback";
+import ArchiveRequests from "./components/ArchiveRequests/ArchiveRequests";
+import ArchiveFeedback from "./components/ArchiveFeedback/ArchiveFeedback";
 
 function App() {
 	// const user = localStorage.getItem("userID");
@@ -33,6 +37,10 @@ function App() {
 			<Route path="/contact" exact element={<ContactAgents />} />
 			<Route path="/adminProfile" exact element={<AdminProfile />} />
 			<Route path="/serviceSlot" exact element={<ServiceSlot />} />
+			<Route path="/activeRequests" exact element={<ActiveRequests />}></Route>
+			<Route path="/activeFeedback" exact element={<ActiveFeedback />}></Route>
+			<Route path="/archiveRequests" exact element={<ArchiveRequests />}></Route>
+			<Route path="/archiveFeedback" exact element={<ArchiveFeedback />}></Route>
 		</Routes>
 	);
 }

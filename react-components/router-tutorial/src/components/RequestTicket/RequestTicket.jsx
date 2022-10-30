@@ -12,27 +12,6 @@ const bannerColor = "rgb(197, 124, 28)";
 export default function RequestTicket() {
   const navigate = useNavigate();
 
-  useEffect(async ()=>{
-    try {
-			const url = "http://localhost:8080/api/user/login";
-			const resp = await axios.post(url, data);
-			console.log(resp.data)
-			if(resp.data.message==='logged in successfully')
-			{localStorage.setItem("userID", resp.data.store);
-			navigate("/userPage");}
-
-
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
-			}
-		}
-  })
-
   const navigateToNextPage = () => {
     navigate("/Services");
   };

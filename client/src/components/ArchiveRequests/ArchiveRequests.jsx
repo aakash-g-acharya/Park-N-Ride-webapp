@@ -1,9 +1,81 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
 const layoutColor = "antiquewhite";
 const bannerColor = "rgb(197, 124, 28)";
 
 export default function ArchiveRequests() {
+
+  const navigate = useNavigate();
+  const [requestInfo, setRequestInfo] = useState(null);
+
+  useEffect(async () => {
+    try {
+      const user = localStorage.getItem("userID");
+      if (!user) {
+        navigate("/");
+      }
+
+      const url = "http://localhost:8080/api/userRequest/viewUserRequest";
+      var resp = await axios.get(url,{params:{"status":false}});
+      resp = resp.data;
+      if (resp.message) {
+        console.log(resp);
+        setRequestInfo(resp.data);
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        console.log(error.response.message);
+      }
+    }
+  }, []);
+
+
+    const tdData = () => {
+    return requestInfo&&requestInfo.map((data,index) => {
+
+      const displayFunc = (x)=>{
+        const arr = [];
+        if(x.carWashStatus)
+        {
+          arr.push("Car-Wash");
+        }
+        if(x.tyreworkStatus)
+        {
+          arr.push("Tyre-Filling");
+        }
+        if(x.fuelStatus)
+        {
+          arr.push("Fuelling");
+        }
+        
+        if(arr.length===0)
+        {
+          return "NONE";
+        }
+
+        return arr.join(", ");
+      }
+
+      return (
+        <tr>
+          <th scope="row">{index+1}</th>
+          <td>{requestInfo && data.ticketID}</td>
+          <td>Service Request</td>
+          <td>{displayFunc(data)}</td>
+          <td>Accomplished!</td>
+        </tr>
+      );
+    });
+  };
+
   return (
     <>
       <div className="navbar">
@@ -45,7 +117,7 @@ export default function ArchiveRequests() {
                   aria-label="Basic mixed styles example"
                 >
                   <a
-                    href="/ActiveRequests"
+                    href="/activeRequests"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -53,7 +125,7 @@ export default function ArchiveRequests() {
                     Active Requests
                   </a>
                   <a
-                    href="/ActiveFeedback"
+                    href="/activeFeedback"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -61,7 +133,7 @@ export default function ArchiveRequests() {
                     Active Feedbacks
                   </a>
                   <a
-                    href="/AdminHome"
+                    href="/adminHome"
                     className="btn btn-success btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -69,7 +141,7 @@ export default function ArchiveRequests() {
                     Home Page
                   </a>
                   <a
-                    href="/ArchiveRequests"
+                    href="/archiveRequests"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -77,7 +149,7 @@ export default function ArchiveRequests() {
                     Archive Requests
                   </a>
                   <a
-                    href="/ArchiveFeedback"
+                    href="/archiveFeedback"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -91,26 +163,14 @@ export default function ArchiveRequests() {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Request Type</th>
-                    <th scope="col">Comments</th>
+                      <th scope="col">Ticket ID</th>
+                      <th scope="col">Request Type</th>
+                      <th scope="col">Services</th>
+                      <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Service Request</td>
-                    <td>Otto</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Service Request</td>
-                    <td>Thornton</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Service Request</td>
-                    <td>Thornton</td>
-                  </tr>
+                  {tdData()}
                 </tbody>
               </table>
               </div>

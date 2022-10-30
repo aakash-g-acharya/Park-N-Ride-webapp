@@ -8,6 +8,11 @@ const feedbackSchema = new mongoose.Schema({
 	comments:{
         type: String,
         required: true
+    },
+    status:{
+        type: Boolean,
+        required: true,
+        default: true
     }
 });
 

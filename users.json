@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "6352d2089130eeb3c212b5bf"
+  },
+  "name": "abc",
+  "phone": 12345,
+  "address": "xyz",
+  "email": "123@gmail.com",
+  "password": "123",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6352d23bfb85b5a628bfcceb"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "124@gmail.com",
+  "password": "124",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a44e8b5e8cdfb0552653"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "125@gmail.com",
+  "password": "125",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a4568b5e8cdfb0552656"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "126@gmail.com",
+  "password": "126",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a45c8b5e8cdfb0552659"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "127@gmail.com",
+  "password": "127",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353a4ba8b5e8cdfb055266d"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "128@gmail.com",
+  "password": "128",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6353aa13f7ccabc5dfa809ba"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "129@gmail.com",
+  "password": "129",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63592e6d2c110940f55f7b7b"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "130@gmail.com",
+  "password": "130",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63593e9b2c110940f55f7b8e"
+  },
+  "name": "abd",
+  "phone": 12346,
+  "address": "xyz",
+  "email": "131@gmail.com",
+  "password": "130",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63593f955cef4ffb882a9e67"
+  },
+  "name": "abd",
+  "phone": 1234567890,
+  "address": "xyz",
+  "email": "132@gmail.com",
+  "password": "132",
+  "__v": 0
+}]

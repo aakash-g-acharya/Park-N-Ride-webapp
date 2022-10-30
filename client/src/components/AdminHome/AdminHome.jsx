@@ -29,7 +29,7 @@ export default function AdminHome() {
   }
 
   const getReq = ()=>{
-    navigate("/profile");
+    navigate("/activeRequests");
   }
 
   const getSlot = ()=>{
@@ -57,28 +57,13 @@ export default function AdminHome() {
         </div>
 
         <div className="col-4">
-          <div className="row">
-            <div className="col-3">
+          {/* <div className="row">
+            <div className="col-12">
               <a className="nav-link p-3" href="#actions">
                 Actions
               </a>
             </div>
-            <div className="col-3">
-              <a className="nav-link p-3" href="#srvcs">
-                Services
-              </a>
-            </div>
-            <div className="col-3">
-              <a className="nav-link p-3" href="#rvws">
-                Reviews
-              </a>
-            </div>
-            <div className="col-3">
-              <a className="nav-link p-3" href="#fdbck">
-                Feedback
-              </a>
-            </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="col-3 px-2 d-flex justify-content-end">

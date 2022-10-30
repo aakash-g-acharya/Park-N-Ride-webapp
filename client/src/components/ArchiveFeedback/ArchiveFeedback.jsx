@@ -1,9 +1,57 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 // const primaryColor = "#3bb19b";
 const secondaryColor = "rgb(9, 67, 95)";
 const layoutColor = "antiquewhite";
 const bannerColor = "rgb(197, 124, 28)";
 
 export default function ArchiveFeedback() {
+
+  const navigate = useNavigate();
+  const [feedbackInfo, setfeedbackInfo] = useState(null);
+
+  useEffect(async () => {
+    try {
+      const user = localStorage.getItem("userID");
+      if (!user) {
+        navigate("/");
+      }
+
+      const url = "http://localhost:8080/api/feedback/viewFeedback";
+      var resp = await axios.get(url,{"status":false});
+      resp = resp.data;
+      if (resp.message) {
+        console.log(resp);
+        setfeedbackInfo(resp.data);
+      }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        console.log(error.response.message);
+      }
+    }
+  }, []);
+
+  const tdData = () => {
+    return feedbackInfo&&feedbackInfo.map((data,index) => {
+      return (
+        <tr>
+          <th scope="row">{index+1}</th>
+          <td>{feedbackInfo && data.userID}</td>
+          <td>Feedback</td>
+          <td>{data.comments}</td>
+          <td>Accomplished!</td>
+        </tr>
+      );
+    });
+  };
+
+
   return (
     <>
       <div className="navbar">
@@ -45,7 +93,7 @@ export default function ArchiveFeedback() {
                   aria-label="Basic mixed styles example"
                 >
                   <a
-                    href="/ActiveRequests"
+                    href="/activeRequests"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -53,7 +101,7 @@ export default function ArchiveFeedback() {
                     Active Requests
                   </a>
                   <a
-                    href="/ActiveFeedback"
+                    href="/activeFeedback"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -61,7 +109,7 @@ export default function ArchiveFeedback() {
                     Active Feedbacks
                   </a>
                   <a
-                    href="/AdminHome"
+                    href="/adminHome"
                     className="btn btn-success btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -69,7 +117,7 @@ export default function ArchiveFeedback() {
                     Home Page
                   </a>
                   <a
-                    href="/ArchiveRequests"
+                    href="/archiveRequests"
                     className="btn btn-warning btn-lg"
                     role="button"
                     style={{ width: "max-content" }}
@@ -77,7 +125,7 @@ export default function ArchiveFeedback() {
                     Archive Requests
                   </a>
                   <a
-                    href="/ArchiveFeedback"
+                    href="/archiveFeedback"
                     className="btn btn-warning btn-lg mx-1"
                     role="button"
                     style={{ width: "max-content" }}
@@ -93,24 +141,11 @@ export default function ArchiveFeedback() {
                     <th scope="col">#</th>
                     <th scope="col">Request Type</th>
                     <th scope="col">Comments</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Feedback</td>
-                    <td>Otto</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Feedback</td>
-                    <td>Thornton</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Feedback</td>
-                    <td>Thornton</td>
-                  </tr>
+                  {tdData}
                 </tbody>
               </table>
               </div>
