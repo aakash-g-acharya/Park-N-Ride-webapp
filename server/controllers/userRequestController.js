@@ -1,5 +1,8 @@
 const { UserRequests } = require("../models/userRequests");
 
+
+//middleware for fetching details of all user related services
+
 const viewUserRequest = async (req, res) => {
   try {
     const requestsList = await UserRequests.find({ status: req.query.status });
@@ -13,6 +16,9 @@ const viewUserRequest = async (req, res) => {
     res.status(500).send({ message: "Internal Server Error", error: error });
   }
 };
+
+
+//middleware to update details of a user related service
 
 const updateUserRequest = async (req, res) => {
   try {

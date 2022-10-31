@@ -1,5 +1,8 @@
 const { User, temp } = require("../models/user");
 
+
+//middleware for user registeration
+
 const registerUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -29,6 +32,9 @@ const registerUser = async (req, res) => {
   }
 };
 
+
+//middleware for user login
+
 const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -49,6 +55,9 @@ const loginUser = async (req, res) => {
     res.status(500).send({ message: "Internal Server Error", error: error });
   }
 };
+
+
+//middleware for fetching details of user
 
 const profileUser = async (req, res) => {
   try {
