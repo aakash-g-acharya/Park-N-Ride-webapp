@@ -88,5 +88,12 @@ Import the park-slots json source file present in the repository to your local d
 ### Checkout
 ![](images/checkout.png)
 
+## Contact
+
+Aakash G Acharya - aakashgacharya@gmail.com
+
+Aniketh Narayan Bellala - aniketh.bellala@gmail.com
+
+Project Link: (https://github.com/aakash-g-acharya/Park-N-Ride-webapp)
 
 
