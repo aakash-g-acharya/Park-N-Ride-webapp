@@ -8,6 +8,10 @@ This is a web application for a Park N Ride system. From booking a slot to makin
 - Database: MongoDB
 - Frontend: React.js
 
+## USER MANUAL
+
+Link - https://github.com/aakash-g-acharya/Park-N-Ride-webapp/blob/main/USER-MANUAL.pdf
+
 ## Run Locally
 
 Clone the project
